@@ -1,0 +1,24 @@
+wordpress:
+  image:
+    name: wordpress
+    tag: php8.2-apache
+  replicaCount: 1
+  access:
+    domain: behnia-farahbod-nl-rg2.maxtld.dev
+    endpoint: /wordpress
+
+mysql:
+  image:
+    name: mysql
+    tag: latest
+  replicaCount: 1
+  database: wordpress
+
+phpmyadmin:
+  image:
+    name: phpmyadmin/phpmyadmin
+    tag: latest
+  replicaCount: 1
+  access:
+    domain: behnia-farahbod-nl-rg2.maxtld.dev
+    endpoint: /dbadmin

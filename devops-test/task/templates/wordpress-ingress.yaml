@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-wordpress-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/app-root: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - {{ .Values.wordpress.access.domain }}
+      secretName: {{ .Release.Name }}-cert
+  rules:
+    - host: {{ .Values.wordpress.access.domain }}
+      http:
+        paths:
+          - path: {{ .Values.wordpress.access.endpoint }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-wordpress-service
+                port:
+                  number: 80
