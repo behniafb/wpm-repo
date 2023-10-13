@@ -1,6 +1,0 @@
-apiVersion: v2
-name: task
-description: A Helm chart for wordpress-mysql-pma
-type: application
-version: 0.2.0
-appVersion: "latest" # Wordpress version
