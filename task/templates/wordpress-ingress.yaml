@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: {{ .Release.Name }}-wordpress-ingress
   annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
     nginx.ingress.kubernetes.io/app-root: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/configuration-snippet: |
@@ -12,7 +13,7 @@ spec:
   tls:
     - hosts:
         - {{ .Values.wordpress.access.domain }}
-      secretName: {{ .Release.Name }}-cert
+      secretName: behnia-farahbod-cert
   rules:
     - host: {{ .Values.wordpress.access.domain }}
       http:
