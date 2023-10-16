@@ -9,7 +9,9 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
+    nginx.ingress.kubernetes.io/auth-type: basic
     nginx.ingress.kubernetes.io/auth-secret: panels-auth-secret
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - Rayankar'
 spec:
   ingressClassName: nginx
   tls:
