@@ -15,10 +15,6 @@
 - MySQL Deployment
 - PhpMyAdmin has an Ingress
 
-## Nice to do
-
-1. Create a Terraform script for the Kubernetes cluster
-2. Create a CI/CD Azure Pipeline in YAML format in the root project.
 
 ## Delivery
 1. You will be given a VPS running Ubuntu 22, you must be able to deploy with the single command line on this VPS.
